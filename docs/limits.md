@@ -2,10 +2,11 @@
 
 [← README](../README.md)
 
+Limits specific to this demo. For those of the approach itself, see
+[yellowfin's limits](https://github.com/NedJWestern/yellowfin/blob/main/docs/limits.md).
+
 | Limit | Detail |
 | --- | --- |
-| Pruning | Unavailable. A stage is an opaque subprocess, so there is no intermediate value to report back to Optuna |
-| Workspace | Trials run in the working tree, so `params.yaml`, `metrics/` and `dvc.lock` all churn for the duration of a study |
 | Validation size | 360 rows, small enough for a long study to start fitting the split itself |
 | Test metrics | `evaluate` runs in every trial and its results are cached, so `metrics/test.json` can be read before a configuration is chosen |
 

@@ -1,16 +1,16 @@
 [project]
-name = "dvc-optuna"
+name = "dvc-optuna-demo"
 version = "0.1.0"
-description = "A minimal DVC training pipeline, tuned by an Optuna study"
+description = "A minimal DVC training pipeline, tuned by yellowfin"
 requires-python = ">=3.12"
 dependencies = [
     "dvc>=3.0",
     "ipython>=9.17.1",
     "joblib",
-    "optuna>=4.0",
     "pandas",
     "pyyaml",
     "scikit-learn",
+    "yellowfin",
 ]
 
 [dependency-groups]
@@ -18,6 +18,9 @@ dev = ["ruff"]
 
 [tool.uv]
 package = false
+
+[tool.uv.sources]
+yellowfin = { path = "../yellowfin", editable = true }
 
 [tool.ruff]
 line-length = 100

@@ -1,4 +1,4 @@
-# Optuna search definition, driven by src/tune.py.
+# Optuna search definition, driven by yellowfin (https://github.com/NedJWestern/yellowfin).
 #
 # Kept out of params.yaml on purpose: DVC tracks params.yaml per-key, and
 # nothing here should ever look like a change to a pipeline stage's inputs.
