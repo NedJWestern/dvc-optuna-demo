@@ -2,11 +2,7 @@
 
 [← README](../README.md)
 
-```bash
-uv run python src/tune.py
-```
-
-`src/tune.py` runs an Optuna study over the pipeline, configured by `search.yaml`.
+What `src/tune.py` does during a study. To run one, see [Running a study](running.md).
 
 | When | What happens |
 | --- | --- |
@@ -21,13 +17,3 @@ makes a study resumable: trial numbering continues rather than restarting. No DV
 experiment is created per trial. See [Why the DVC Python API](dvc-python-api.md).
 
 Each trial's model and metrics are still kept in DVC's run cache. See [Cache](cache.md).
-
-## Browsing a study
-
-```bash
-make dashboard
-```
-
-Serves [optuna-dashboard](https://github.com/optuna/optuna-dashboard) over `optuna.db` at
-http://127.0.0.1:8080, showing trial history, parameter importances and plots of the
-search space. It is fetched on the fly by `uv run --with`, not added as a dependency.
