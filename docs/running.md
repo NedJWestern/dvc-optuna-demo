@@ -16,7 +16,8 @@ The digits data ships with scikit-learn, so nothing is downloaded.
 uv run python src/tune.py
 ```
 
-Runs `n_trials` trials, then prints the best trial and the `dvc exp run -S ...`
+Runs up to `n_trials` trials, stopping early if `patience` trials pass without a new
+best, then prints the best trial and the `dvc exp run -S ...`
 command that records it as a DVC experiment. `Ctrl-C` stops early and still restores
 the committed `params.yaml`.
 
@@ -28,6 +29,7 @@ All settings are in `search.yaml`.
 | --- | --- |
 | `study_name` | Optuna study name, also used to name the best-trial experiment |
 | `n_trials` | Trials per run |
+| `patience` | Optional. Stop once this many trials pass without a new best value. Counted across the whole study, so a resumed study that has already stalled stops after one trial |
 | `seed` | TPE sampler seed |
 | `storage` | Optuna storage URL, where the study is recorded |
 | `objective.metric` | `path:dotted.key` of the value to optimise |

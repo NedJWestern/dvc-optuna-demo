@@ -48,6 +48,20 @@ def read_metric(address: str) -> float:
     return float(value)
 
 
+def stop_when_stagnant(patience: int):
+    """Build a callback that stops the study once `patience` trials pass without a new best."""
+
+    def callback(study: optuna.Study, trial: optuna.trial.FrozenTrial) -> None:
+        try:
+            best = study.best_trial.number
+        except ValueError:  # no trial has completed yet
+            return
+        if trial.number - best >= patience:
+            study.stop()
+
+    return callback
+
+
 def as_flag(value) -> str:
     """Render a sampled value the way `dvc exp run -S` expects to read it."""
     if isinstance(value, bool):
@@ -83,6 +97,7 @@ def main() -> None:
                 objective,
                 n_trials=config["n_trials"],
                 catch=(ReproductionError,),
+                callbacks=[stop_when_stagnant(config["patience"])] if "patience" in config else [],
             )
         finally:
             PARAMS_FILE.write_bytes(baseline)

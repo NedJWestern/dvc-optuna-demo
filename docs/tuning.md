@@ -7,6 +7,7 @@ What `src/tune.py` does during a study. To run one, see [Running a study](runnin
 | When | What happens |
 | --- | --- |
 | Each trial | Sampled values are written into `params.yaml`, then `Repo.reproduce()` re-runs the affected stages |
+| `patience` trials without a new best | The study stops early |
 | Study ends, including on `Ctrl-C` | The committed `params.yaml` is restored and the pipeline rebuilt from it |
 | After the study | The best trial is printed, with the `dvc exp run -S ...` command that replays it as a DVC experiment |
 

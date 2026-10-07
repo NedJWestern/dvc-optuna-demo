@@ -6,6 +6,7 @@
 
 study_name: digits-tpe
 n_trials: 25
+patience: 10     # stop after this many trials without a new best; omit to always run n_trials
 seed: 17
 storage: sqlite:///optuna.db
 
