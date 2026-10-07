@@ -5,7 +5,7 @@ so DVC re-runs only the stages those parameters affect and the objective is read
 from the metrics file that stage produced.
 
 No DVC experiment is recorded per trial: Optuna's storage is the record of the
-study, and the best trial is replayed through `dvc exp run` once at the end.
+study, and the best trial is printed as a `dvc exp run -S` command to replay.
 """
 
 import json

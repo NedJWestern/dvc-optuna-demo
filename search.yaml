@@ -13,7 +13,7 @@ objective:
   metric: metrics/valid.json:logloss
   direction: minimize
 
-# Keys are dotted DVC parameter paths, passed straight to `dvc exp run -S`.
+# Keys are dotted params.yaml paths, written into params.yaml for each trial.
 # Each value is a trial.suggest_* call: `type` picks the method, the rest are
 # forwarded as keyword arguments.
 space:

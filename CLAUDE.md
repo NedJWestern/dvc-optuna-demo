@@ -3,7 +3,8 @@
 ## What this is
 
 A prototype of one idea: DVC owns the pipeline, Optuna owns the search, and
-`src/tune.py` joins them by turning each trial into a `dvc exp run -S` call.
+`src/tune.py` joins them by writing each trial's values into `params.yaml` and
+calling DVC's `Repo.reproduce()`.
 The ML problem — scikit-learn's digits set, a `HistGradientBoostingClassifier` —
 is deliberately trivial. It is a harness for testing the integration, not a
 model worth caring about.
