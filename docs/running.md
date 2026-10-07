@@ -49,3 +49,7 @@ make dashboard
 Serves [optuna-dashboard](https://github.com/optuna/optuna-dashboard) over `optuna.db` at
 http://127.0.0.1:8080, showing trial history, parameter importances and plots of the
 search space. It is fetched on the fly by `uv run --with`, not added as a dependency.
+
+It listens on all interfaces, so inside a container it is reachable from the host once
+the port is published, e.g. `podman run -p 127.0.0.1:8080:8080 ...`. Ports can only be
+published when a container is created, not added to a running one.

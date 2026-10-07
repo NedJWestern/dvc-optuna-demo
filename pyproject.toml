@@ -5,6 +5,7 @@ description = "A minimal DVC training pipeline, tuned by an Optuna study"
 requires-python = ">=3.12"
 dependencies = [
     "dvc>=3.0",
+    "ipython>=9.17.1",
     "joblib",
     "optuna>=4.0",
     "pandas",
